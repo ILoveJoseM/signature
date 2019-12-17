@@ -66,7 +66,7 @@ class SignAdaptor
 
         $signature = self::getSignature($type);
 
-        return $signature->sign($message, $key);
+        return urlencode($signature->sign($message, $key));
     }
 
     /**
@@ -81,7 +81,7 @@ class SignAdaptor
 
         $signature = self::getSignature($type);
 
-        return $signature->verify($message, $sign, $key);
+        return $signature->verify($message, urldecode($sign), $key);
     }
 
     /**
